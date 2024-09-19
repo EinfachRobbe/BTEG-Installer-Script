@@ -10,12 +10,11 @@ Global Const $WS_EX_DLGMODALFRAME = 0x00000001
 Global $hGui, $hProgressBar, $bRunning = False
 
 Func ShowLoadingBar()
-    ; Erstelle das GUI-Fenster
     $hGui = GUICreate("Ladebalken", 300, 100, -1, -1, $WS_POPUP, $WS_EX_TOPMOST)
-    GUISetBkColor(0x21252B) ; Hintergrundfarbe des Fensters (weiß)
+    GUISetBkColor(0x21252B)
 
     $hLabel = GUICtrlCreateLabel("Lade Binaries...", 10, 10, 280, 20)
-	GUICtrlSetColor($hLabel, 0xFFFFFF) ; Textfarbe des Labels (schwarz)
+    GUICtrlSetColor($hLabel, 0xFFFFFF)
     $hProgressBar = GUICtrlCreateProgress(10, 40, 280, 20)
 
     GUISetState(@SW_SHOW)
