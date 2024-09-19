@@ -9,30 +9,25 @@ Global Const $WS_EX_TOOLWINDOW = 0x00000080
 Global Const $WS_EX_DLGMODALFRAME = 0x00000001
 Global $hGui, $hProgressBar, $bRunning = False
 
-; Funktion zum Erstellen und Anzeigen des Ladebalkens
 Func ShowLoadingBar()
     ; Erstelle das GUI-Fenster
     $hGui = GUICreate("Ladebalken", 300, 100, -1, -1, $WS_POPUP, $WS_EX_TOPMOST)
     GUISetBkColor(0x21252B) ; Hintergrundfarbe des Fensters (weiß)
 
-    ; Füge einen statischen Text und einen Ladebalken hinzu
     $hLabel = GUICtrlCreateLabel("Lade Binaries...", 10, 10, 280, 20)
 	GUICtrlSetColor($hLabel, 0xFFFFFF) ; Textfarbe des Labels (schwarz)
     $hProgressBar = GUICtrlCreateProgress(10, 40, 280, 20)
 
-    ; Zeige das GUI-Fenster an
     GUISetState(@SW_SHOW)
     $bRunning = True
 EndFunc
 
-; Funktion zum Aktualisieren des Ladebalkens (falls benötigt)
 Func UpdateLoadingBar($progress)
     If $bRunning Then
-        GUICtrlSetData($hProgressBar, $progress) ; Setze den Fortschritt des Ladebalkens
+        GUICtrlSetData($hProgressBar, $progress)
     EndIf
 EndFunc
 
-; Funktion zum Schließen des Ladebalkens
 Func CloseLoadingBar()
     If $bRunning Then
         GUIDelete($hGui)
